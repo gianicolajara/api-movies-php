@@ -26,11 +26,11 @@ class apiMovie extends DB
 
                 array_push($arrayData, $row);
             }
-            $this->info = json_encode(["movies" => $arrayData]);
-            print_r($this->info);
+            $arrayData = ["movies" => $arrayData];
+            $this->info($arrayData);
         } else {
             $this->info = ['info' => "Not found movies"];
-            $this->error($this->info);
+            $this->info($this->info);
 
         }
     }
@@ -41,18 +41,18 @@ class apiMovie extends DB
         $row->execute(["id" => $id]);
         if ($row->rowCount() === 1) {
             $res = $row->fetch(PDO::FETCH_ASSOC);
-            $res = json_encode(["movies" => $res]);
-            echo $res;
+            $res = ["movies" => $res];
+            $this->info($res);
         } else {
             $this->info = ['info' => "Not found movies"];
-            $this->error($this->info);
+            $this->info($this->info);
         }
     }
 
-    public function error($error)
+    public function info($info)
     {
-        $error = json_encode($error);
-        echo $error;
+        $message = json_encode($info);
+        echo $message;
     }
 
 }

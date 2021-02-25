@@ -9,7 +9,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     if (is_numeric($id)) {
         $apiMovie->getMovieId($id);
     } else {
-        $apiMovie->error(['info' => 'id not is numeric']);
+        $apiMovie->info(['info' => 'id not is numeric']);
     }
 } else {
     $apiMovie->getAll();
