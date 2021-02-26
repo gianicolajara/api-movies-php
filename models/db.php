@@ -2,7 +2,6 @@
 
 class DB
 {
-
     private $host;
     private $username;
     private $pass;
